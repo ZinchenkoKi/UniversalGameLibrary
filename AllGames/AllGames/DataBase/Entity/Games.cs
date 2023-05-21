@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AllGames.DataBase.Entity
 {
@@ -11,10 +6,13 @@ namespace AllGames.DataBase.Entity
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+
         public string Name { get; set; }
-        public string Category { get; set; }
-        [Required]
         public string Path { get; set; }
+        public bool RequiresLauncher { get; set; }
+        public string LauncherPath { get; set; }
+
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }

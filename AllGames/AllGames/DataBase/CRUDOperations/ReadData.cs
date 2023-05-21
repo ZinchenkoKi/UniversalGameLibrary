@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace AllGames.DataBase.EntityOperations
 {
-    internal class GettingData
+    internal class ReadData
     {
-        public List<Games> Get()
+        public List<Games> Read()
         {
             using (DataContext context = new DataContext())
             {

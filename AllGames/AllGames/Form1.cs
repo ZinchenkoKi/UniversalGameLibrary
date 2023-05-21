@@ -1,5 +1,8 @@
-using AllGames.DataBase.Entity;
-using System.Diagnostics;
+using AllGames.CreatingVisualElements;
+using AllGames.CreatingVisualElements.Buttons;
+using AllGames.DataBase.EntityOperations;
+using AllGames.DataBase.Requests;
+using AllGames.VisualElements;
 
 namespace AllGames
 {
@@ -10,93 +13,67 @@ namespace AllGames
             InitializeComponent();
         }
 
-        private void splitContainer1_Panel2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        public class Gamess
-        {
-            public string Name;
-            public string Path;
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Gamess gamess = new Gamess();
-            Gamess gamess1 = new Gamess();
-            List<Gamess> gameNames = new List<Gamess>();
-            gamess.Name = "Dota";
-            gamess.Path = @"D:\SteamLibrary\steamapps\common\dota 2 beta\game\bin\win64\dota2.exe";
-            gameNames.Add(gamess);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            gamess1.Name = "ACValhalla";
-            gamess1.Path = @"D:\Games\Assassin's Creed Valhalla\ACValhalla.exe";
-            gameNames.Add(gamess1);
-            foreach (var item in gameNames)
-            {
-                Button helloButton = new Button();
-                helloButton.BackColor = Color.White;
-                helloButton.ForeColor = Color.Black;
-                helloButton.Width = 200;
-                helloButton.Height = 30;
-                helloButton.FlatStyle = FlatStyle.Flat;
-                helloButton.Text = item.Name;
-                helloButton.Font = new Font(helloButton.Text, 15);
-                flowLayoutPanel1.Controls.Add(helloButton);
-                helloButton.Click += (sender, e) =>
-                {
-                    Process.Start(item.Path);
-                };
-            }
+            var allGames = new WithdrawAllGames();
+            allGames.Withdrawal(panel1);
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            var allGames = new WithdrawAllGames();
+            allGames.Withdrawal(panel1);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            var label = new LabelFromLayoutPanel();
+            var textBox = new TextBoxFromLayoutPanel();
+            var comboBox = new CategoryBox();
+            var buttonDel = new DeleteButton();
+            var buttonUp = new UpdateButton();
+            var buttonC = new CreateButton();
+            var checkBox = new CheckBox();
+            var id = textBox.Create(30, 70);
+            var name = textBox.Create(30, 150);
+            var path = textBox.Create(30, 230);
+            var category = comboBox.Create(30, 310);
+            var delete = buttonDel.Create(175, 385, id);
+            var update = buttonUp.Create(id.Text, name, path, category);
+            var create = buttonC.Create(469, 385, name, path, category);
+            path.DoubleClick += (sender, e) =>
+            {
+                openFileDialog1.ShowDialog();
+                path.Text = openFileDialog1.FileName;
+            };
+
+            var read = new ReadData();
+            foreach (var item in read.Read())
+            {
+                category.Items.Add(item.Category);
+            }
+
+            checkBox.Location = new Point(135, 70);
+
+
+            panel1.Controls.Add(id);
+            panel1.Controls.Add(name);
+            panel1.Controls.Add(path);
+            panel1.Controls.Add(category);
+            panel1.Controls.Add(label.Create(30, 30, "Id"));
+            panel1.Controls.Add(label.Create(30, 110, "Название игры"));
+            panel1.Controls.Add(label.Create(30, 190, "Путь"));
+            panel1.Controls.Add(label.Create(30, 270, "Категория"));
+            panel1.Controls.Add(delete);
+            panel1.Controls.Add(update);
+            panel1.Controls.Add(create);
+            panel1.Controls.Add(checkBox);
+        }
+
     }
 }

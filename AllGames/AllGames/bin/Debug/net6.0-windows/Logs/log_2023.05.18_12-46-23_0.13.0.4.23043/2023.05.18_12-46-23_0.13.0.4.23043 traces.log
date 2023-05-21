@@ -1,0 +1,6 @@
+2023-05-18 15:46:24.766 +03:00|0.13.0.4.23043|Info|application|Application awaken, updateQueue:'Update' 
+2023-05-18 15:46:24.766 +03:00|0.13.0.4.23043|Info|application|Assert.raiseExceptions:'True' 
+2023-05-18 15:46:24.766 +03:00|0.13.0.4.23043|Info|application|Application obfuscation succeed. 
+2023-05-18 15:46:27.158 +03:00|0.13.0.4.23043|Info|application|driveType:SSD swapDriveType:SSD 
+2023-05-18 15:46:27.973 +03:00|0.13.0.4.23043|Info|application|NVIDIA Reflex is available on this machine, Status: NvReflex_OK. 
+2023-05-18 15:46:27.987 +03:00|0.13.0.4.23043|Error|FilesChecker|Consistency ensurance failed. File not exist. File: "EscapeFromTarkov.exe". ElapsedMilliseconds:122 

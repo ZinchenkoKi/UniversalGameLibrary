@@ -21,6 +21,23 @@ namespace AllGames.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("AllGames.DataBase.Entity.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("AllGames.DataBase.Entity.Games", b =>
                 {
                     b.Property<int>("Id")
@@ -29,7 +46,10 @@ namespace AllGames.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Category")
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("LauncherPath")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -41,9 +61,30 @@ namespace AllGames.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("RequiresLauncher")
+                        .HasColumnType("boolean");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Games");
+                });
+
+            modelBuilder.Entity("AllGames.DataBase.Entity.Games", b =>
+                {
+                    b.HasOne("AllGames.DataBase.Entity.Category", "Category")
+                        .WithMany("Games")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("AllGames.DataBase.Entity.Category", b =>
+                {
+                    b.Navigation("Games");
                 });
 #pragma warning restore 612, 618
         }

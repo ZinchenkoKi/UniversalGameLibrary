@@ -7,13 +7,20 @@ using System.Threading.Tasks;
 
 namespace AllGames.DataBase.EntityOperations
 {
-    internal class AddingData
+    internal class CreateData
     {
-        public void Add(string Name, string Path)
+        public void Create(string name, string path, int category)
         {
             using (DataContext context = new DataContext())
             {
-                Games games = new Games() { Name = Name, Path = Path };
+                var games = new Games()
+                {
+                    Name = name,
+                    Path = path,
+                    CategoryId = category
+                };
+
+                context.Games.Add(games);
                 context.SaveChanges();
             }
         }

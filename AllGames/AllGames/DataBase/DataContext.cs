@@ -11,6 +11,7 @@ namespace AllGames.DataBase
     internal class DataContext : DbContext
     {
         public DbSet<Games> Games { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

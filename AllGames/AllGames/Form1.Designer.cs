@@ -28,111 +28,121 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            button1 = new Button();
-            tabPage2 = new TabPage();
-            tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            label1 = new Label();
+            label2 = new Label();
+            panel1 = new Panel();
+            openFileDialog1 = new OpenFileDialog();
             tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
-            // 
-            // tabControl1
-            // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new Point(0, 0);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(984, 461);
-            tabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            tabPage1.BackColor = Color.Silver;
-            tabPage1.Controls.Add(tableLayoutPanel1);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(976, 433);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Game Library";
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70.61855F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 730F));
-            tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 0, 0);
-            tableLayoutPanel1.Controls.Add(button1, 0, 1);
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 78F));
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
+            tableLayoutPanel1.Controls.Add(panel1, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 3);
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 89.46136F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 46F));
-            tableLayoutPanel1.Size = new Size(970, 427);
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 93F));
+            tableLayoutPanel1.Size = new Size(984, 461);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // flowLayoutPanel1
+            // tableLayoutPanel2
             // 
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            flowLayoutPanel1.Location = new Point(3, 3);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(234, 375);
-            flowLayoutPanel1.TabIndex = 2;
-            flowLayoutPanel1.WrapContents = false;
+            tableLayoutPanel2.ColumnCount = 3;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 98F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1F));
+            tableLayoutPanel2.Controls.Add(label1, 1, 0);
+            tableLayoutPanel2.Controls.Add(label2, 1, 2);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(3, 3);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 3;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 10.2040806F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 79.591835F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 10.2040806F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.Size = new Size(210, 455);
+            tableLayoutPanel2.TabIndex = 0;
             // 
-            // button1
+            // label1
             // 
-            button1.Dock = DockStyle.Fill;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(3, 384);
-            button1.Name = "button1";
-            button1.Size = new Size(234, 40);
-            button1.TabIndex = 3;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.BackColor = Color.FromArgb(63, 71, 109);
+            label1.Dock = DockStyle.Fill;
+            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.FromArgb(254, 244, 242);
+            label1.Location = new Point(2, 0);
+            label1.Margin = new Padding(0);
+            label1.Name = "label1";
+            label1.Size = new Size(205, 46);
+            label1.TabIndex = 0;
+            label1.Text = "🎲 Библиотека";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            label1.Click += label1_Click;
             // 
-            // tabPage2
+            // label2
             // 
-            tabPage2.BackColor = Color.SteelBlue;
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(976, 433);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Settings";
+            label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(63, 71, 109);
+            label2.Dock = DockStyle.Fill;
+            label2.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.FromArgb(254, 244, 242);
+            label2.Location = new Point(2, 408);
+            label2.Margin = new Padding(0);
+            label2.Name = "label2";
+            label2.Size = new Size(205, 47);
+            label2.TabIndex = 1;
+            label2.Text = "⚙️ Настройки";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            label2.Click += label2_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(63, 71, 109);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(219, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(762, 455);
+            panel1.TabIndex = 3;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(69, 77, 115);
             ClientSize = new Size(984, 461);
-            Controls.Add(tabControl1);
+            Controls.Add(tableLayoutPanel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AllGames";
             Load += Form1_Load;
-            tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl tabControl1;
-        private TabPage tabPage1;
-        private TabPage tabPage2;
         private TableLayoutPanel tableLayoutPanel1;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Button button1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label label1;
+        private Label label2;
+        private Panel panel1;
+        private OpenFileDialog openFileDialog1;
     }
 }

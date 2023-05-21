@@ -121,3 +121,4 @@ E:\Projects\UniversalGameLibrary\AllGames\AllGames\bin\Debug\net6.0-windows\nuni
 E:\Projects\UniversalGameLibrary\AllGames\AllGames\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
 E:\Projects\UniversalGameLibrary\AllGames\AllGames\bin\Debug\net6.0-windows\System.Text.Json.dll
 E:\Projects\UniversalGameLibrary\AllGames\AllGames\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+E:\Projects\UniversalGameLibrary\AllGames\AllGames\obj\Debug\net6.0-windows\AllGames.Properties.Resources.resources
