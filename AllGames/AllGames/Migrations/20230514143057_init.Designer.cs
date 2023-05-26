@@ -36,7 +36,7 @@ namespace AllGames.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NameBox")
                         .IsRequired()
                         .HasColumnType("text");
 

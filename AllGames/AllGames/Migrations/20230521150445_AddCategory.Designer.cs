@@ -32,7 +32,7 @@ namespace AllGames.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NameBox")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -56,7 +56,7 @@ namespace AllGames.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NameBox")
                         .IsRequired()
                         .HasColumnType("text");
 
