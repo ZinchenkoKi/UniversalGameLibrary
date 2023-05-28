@@ -7,6 +7,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
 	<GenerateProgramFile>false</GenerateProgramFile>
+	<StartupObject>AllGames.Program</StartupObject>
+	  <OutputType>WinExe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>

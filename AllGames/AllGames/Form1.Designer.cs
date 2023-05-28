@@ -28,8 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            tableLayoutPanel8 = new TableLayoutPanel();
+            tableLayoutPanel9 = new TableLayoutPanel();
+            textBox1 = new TextBox();
+            checkedListBox1 = new CheckedListBox();
+            button9 = new Button();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             tabPage2 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
@@ -59,6 +66,9 @@
             button3 = new Button();
             requiresLauncher = new Button();
             tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tableLayoutPanel8.SuspendLayout();
+            tableLayoutPanel9.SuspendLayout();
             tabPage2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -87,12 +97,93 @@
             // tabPage1
             // 
             tabPage1.BackColor = SystemColors.ControlDarkDark;
+            tabPage1.Controls.Add(tableLayoutPanel8);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(976, 533);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "🎮 Библиотека";
+            // 
+            // tableLayoutPanel8
+            // 
+            tableLayoutPanel8.ColumnCount = 2;
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            tableLayoutPanel8.Controls.Add(tableLayoutPanel9, 0, 0);
+            tableLayoutPanel8.Controls.Add(flowLayoutPanel1, 1, 0);
+            tableLayoutPanel8.Dock = DockStyle.Fill;
+            tableLayoutPanel8.Location = new Point(3, 3);
+            tableLayoutPanel8.Name = "tableLayoutPanel8";
+            tableLayoutPanel8.RowCount = 1;
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel8.Size = new Size(970, 527);
+            tableLayoutPanel8.TabIndex = 0;
+            // 
+            // tableLayoutPanel9
+            // 
+            tableLayoutPanel9.ColumnCount = 1;
+            tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel9.Controls.Add(textBox1, 0, 0);
+            tableLayoutPanel9.Controls.Add(checkedListBox1, 0, 1);
+            tableLayoutPanel9.Controls.Add(button9, 0, 2);
+            tableLayoutPanel9.Dock = DockStyle.Fill;
+            tableLayoutPanel9.Location = new Point(3, 3);
+            tableLayoutPanel9.Name = "tableLayoutPanel9";
+            tableLayoutPanel9.RowCount = 4;
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 7.485605F));
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 17.2744713F));
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 5.950096F));
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 69.2898254F));
+            tableLayoutPanel9.Size = new Size(188, 521);
+            tableLayoutPanel9.TabIndex = 0;
+            // 
+            // textBox1
+            // 
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Dock = DockStyle.Fill;
+            textBox1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(3, 3);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(182, 36);
+            textBox1.TabIndex = 0;
+            // 
+            // checkedListBox1
+            // 
+            checkedListBox1.BackColor = SystemColors.ButtonShadow;
+            checkedListBox1.BorderStyle = BorderStyle.None;
+            checkedListBox1.Dock = DockStyle.Fill;
+            checkedListBox1.FormattingEnabled = true;
+            checkedListBox1.Location = new Point(3, 42);
+            checkedListBox1.Name = "checkedListBox1";
+            checkedListBox1.Size = new Size(182, 84);
+            checkedListBox1.TabIndex = 1;
+            // 
+            // button9
+            // 
+            button9.BackColor = SystemColors.ButtonShadow;
+            button9.BackgroundImage = (Image)resources.GetObject("button9.BackgroundImage");
+            button9.Dock = DockStyle.Fill;
+            button9.FlatStyle = FlatStyle.Popup;
+            button9.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            button9.ForeColor = SystemColors.Window;
+            button9.Location = new Point(0, 129);
+            button9.Margin = new Padding(0);
+            button9.Name = "button9";
+            button9.Size = new Size(188, 31);
+            button9.TabIndex = 2;
+            button9.Text = "Сортировка";
+            button9.UseVisualStyleBackColor = false;
+            button9.Click += button9_Click;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.Location = new Point(197, 3);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(770, 521);
+            flowLayoutPanel1.TabIndex = 1;
             // 
             // tabPage2
             // 
@@ -552,6 +643,10 @@
             Text = "Form1";
             Load += Form1_Load;
             tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tableLayoutPanel8.ResumeLayout(false);
+            tableLayoutPanel9.ResumeLayout(false);
+            tableLayoutPanel9.PerformLayout();
             tabPage2.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
@@ -604,5 +699,11 @@
         private Button button4;
         private SplitContainer splitContainer1;
         private Button button8;
+        private TableLayoutPanel tableLayoutPanel8;
+        private TableLayoutPanel tableLayoutPanel9;
+        private TextBox textBox1;
+        private CheckedListBox checkedListBox1;
+        private Button button9;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }
