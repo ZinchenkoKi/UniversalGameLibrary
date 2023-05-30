@@ -1,5 +1,4 @@
-﻿
-namespace AllGames.VisualPart
+﻿namespace AllGames.ApplicationInterface.ChangingState
 {
     internal class AutomaticIdOnCommand : ICommand
     {
@@ -8,7 +7,7 @@ namespace AllGames.VisualPart
 
         public AutomaticIdOnCommand(AutomaticId id, Button button)
         {
-            this.id = id;   
+            this.id = id;
             this.button = button;
         }
 

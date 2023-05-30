@@ -1,11 +1,10 @@
-﻿
-namespace AllGames.VisualPart
+﻿namespace AllGames.ApplicationInterface.ChangingState
 {
     internal class ButtonActivation
     {
         ICommand command;
 
-        public ButtonActivation() {}
+        public ButtonActivation() { }
 
         public void SetCommand(ICommand command)
         {

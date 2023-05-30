@@ -15,21 +15,26 @@ namespace AllGames.DataBase.CRUDOperations
         {
             using (var context = new DataContext())
             {
-                var game = new Games() 
+                var game = new Games()
                 {
                     Id = _gameData.Id
-                    , Name = _gameData .Name
-                    , Path = _gameData.Path
-                    , CategoryId = _gameData.CategoryId
-                    , LauncherPath = _gameData.LauncherPath
-                    , RequiresLauncher = _gameData.RequiresLauncher
+                    ,
+                    Name = _gameData.Name
+                    ,
+                    Path = _gameData.Path
+                    ,
+                    CategoryId = _gameData.CategoryId
+                    ,
+                    LauncherPath = _gameData.LauncherPath
+                    ,
+                    RequiresLauncher = _gameData.RequiresLauncher
                 };
                 context.Games.Add(game);
                 context.SaveChanges();
             }
         }
 
-        public void CreateAutomaticId()
+        public void CreationWithoutId()
         {
             using (var context = new DataContext())
             {

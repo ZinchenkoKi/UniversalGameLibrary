@@ -1,4 +1,8 @@
-﻿using AllGames.DataBase;
+﻿using AllGames.Application_Logic;
+using AllGames.Application_Logic.Checks;
+using AllGames.ApplicationInterface.ChangingState;
+using AllGames.ApplicationInterface.Create;
+using AllGames.DataBase;
 using AllGames.DataBase.CRUDOperations;
 using AllGames.DataBase.Entity;
 using AllGames.VisualPart;
@@ -14,128 +18,170 @@ namespace AllGames
 
         private void button2_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.ShowDialog();
-            Path.Text = dialog.FileName;
+            var filePath = new FilePath();
+            Path.Text = filePath.Get();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.ShowDialog();
-            LauncherPath.Text = dialog.FileName;
+            var filePath = new FilePath();
+            LauncherPath.Text = filePath.Get();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             var status = new ButtonStatus();
+            var checking = new CheckingAddition();
+            var launcherNeeded = status.Check(requiresLauncher);
+            var fieldsFilled = checking.Checking(NameBox, Path, Category);
 
-            if (button1.Text == "⬜")
+            if (fieldsFilled)
             {
-                var gameData = GameData.With()
-                 .Id(Convert.ToInt32(Id.Text))
-                 .Name(NameBox.Text)
-                 .Path(Path.Text)
-                 .LauncherPath(LauncherPath.Text)
-                 .RequiresLauncher(status.Check(requiresLauncher))
-                 .CategoryId(Convert.ToInt32(Category.Text.Split('.')[0]))
-                 .CategoryName(Category.Text.Split('.')[1])
-                 .Build();
+                if (launcherNeeded)
+                {
+                    var gameData = GameData.With()
+                     .Id(Convert.ToInt32(Id.Text))
+                     .Name(NameBox.Text)
+                     .Path(Path.Text)
+                     .LauncherPath(LauncherPath.Text)
+                     .RequiresLauncher(launcherNeeded)
+                     .CategoryId(Convert.ToInt32(Category.Text.Split('.')[0]))
+                     .CategoryName(Category.Text.Split('.')[1])
+                     .Build();
 
-                var data = new CreateData(gameData);
-                data.Create();
+                    var data = new CreateData(gameData);
+                    data.Create();
+                }
+                else
+                {
+                    var gameData = GameData.With()
+                     .Name(NameBox.Text)
+                     .Path(Path.Text)
+                     .LauncherPath(LauncherPath.Text)
+                     .RequiresLauncher(launcherNeeded)
+                     .CategoryId(Convert.ToInt32(Category.Text.Split('.')[0]))
+                     .CategoryName(Category.Text.Split('.')[1])
+                     .Build();
+
+                    var data = new CreateData(gameData);
+                    data.CreationWithoutId();
+                }
+
+                Id.Clear();
+                Path.Clear();
+                NameBox.Clear();
+                LauncherPath.Clear();
             }
             else
             {
-                var gameData = GameData.With()
-                 .Name(NameBox.Text)
-                 .Path(Path.Text)
-                 .LauncherPath(LauncherPath.Text)
-                 .RequiresLauncher(status.Check(requiresLauncher))
-                 .CategoryId(Convert.ToInt32(Category.Text.Split('.')[0]))
-                 .CategoryName(Category.Text.Split('.')[1])
-                 .Build();
-
-                var data = new CreateData(gameData);
-                data.CreateAutomaticId();
+                checking.ErrorMessage();
             }
-
-            MessageBox.Show($"Игра \"{NameBox.Text}\" добавлена.");
-            Id.Clear();
-            Path.Clear();
-            NameBox.Clear();
-            LauncherPath.Clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             var activation = new ButtonActivation();
             var automaticId = new AutomaticId();
+            var status = new ButtonStatus();
+            var IdNeeded = status.Check(button1);
             activation.SetCommand(new AutomaticIdOnCommand(automaticId, button1));
 
-            if (button1.Text == "⬜")
-            {
-                activation.PressButton();
-                Id.Enabled = false;
-            }
-            else
+            if (IdNeeded)
             {
                 activation.PressUndo();
                 Id.Enabled = true;
+            }
+            else
+            {
+                activation.PressButton();
+                Id.Enabled = false;
             }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            var gameData = GameData.With().Id(Convert.ToInt32(Id.Text)).Build();
-
-            var data = new DeleteData(gameData);
-            data.Delete();
+            var checking = new CheckingDeletion();
+            var fieldsFilled = checking.Checking(Id);
+            if (fieldsFilled)
+            {
+                var gameData = GameData.With().Id(Convert.ToInt32(Id.Text)).Build();
+                var data = new DeleteAll(gameData);
+                data.DeleteGame();
+                Id.Clear();
+            }
+            else
+            {
+                checking.ErrorMessage();
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("В разработке");
+            var status = new ButtonStatus();
+            var checking = new CheckingUpdate();
+            var fieldsFilled = checking.Checking(Id, NameBox, Path, Category);
+            var launcherNeeded = status.Check(requiresLauncher);
+
+            if (fieldsFilled)
+            {
+                var gameData = GameData.With()
+                    .Id(Convert.ToInt32(Id.Text))
+                    .Name(NameBox.Text)
+                    .Path(Path.Text)
+                    .LauncherPath(LauncherPath.Text)
+                    .RequiresLauncher(launcherNeeded)
+                    .CategoryId(Convert.ToInt32(Category.Text.Split('.')[0]))
+                    .CategoryName(Category.Text.Split('.')[1])
+                    .Build();
+                var update = new UpdateData(gameData);
+                update.Update();
+
+                Id.Clear();
+                Path.Clear();
+                NameBox.Clear();
+                LauncherPath.Clear();
+            }
+            else
+            {
+                checking.ErrorMessage();
+            }
         }
 
         private void requiresLauncher_Click(object sender, EventArgs e)
         {
             var activation = new ButtonActivation();
             var automaticId = new AutomaticId();
+            var status = new ButtonStatus();
+            var launcherNeeded = status.Check(requiresLauncher);
+
             activation.SetCommand(new AutomaticIdOnCommand(automaticId, requiresLauncher));
 
-            if (requiresLauncher.Text == "⬜")
-            {
-                activation.PressButton();
-                LauncherPath.Enabled = true;
-            }
-            else
+            if (launcherNeeded)
             {
                 activation.PressUndo();
                 LauncherPath.Enabled = false;
+            }
+            else
+            {
+                activation.PressButton();
+                LauncherPath.Enabled = true;
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             var read = new ReadData();
-            var games = new List<Games>();
             var category = new List<Category>();
+            var elements = new LibraryElements();
 
-            games = read.Read();
-            category = read.CategoryRead();
+            category = read.ReadCategory();
 
-            foreach (Category item in category)
-            {
-                Category.Items.Add($"{item.Id}.{item.Name}");
-                checkedListBox1.Items.Add(item.Name);
-            }
+            var box = new ComboBoxItems(category);
 
-            foreach (Games game in games)
-            {
-                var element = new GameElement(game);
-                flowLayoutPanel1.Controls.Add(element.Create());
-            }
+            box.Create(Category);
+            box.Create(comboBox1);
+
+            elements.Add(flowLayoutPanel1);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -148,13 +194,12 @@ namespace AllGames
             var data = new CreateData(gameData);
             data.CreateCategory();
 
-            category = read.CategoryRead();
+            category = read.ReadCategory();
             Category.Items.Clear();
 
             foreach (Category item in category)
             {
                 Category.Items.Add($"{item.Id}.{item.Name}");
-                checkedListBox1.Items.Add(item.Name);
             }
         }
 
@@ -165,16 +210,15 @@ namespace AllGames
 
             var gameData = GameData.With().CategoryId(Convert.ToInt32(Category.Text.Split('.')[0])).Build();
 
-            var data = new DeleteData(gameData);
-            data.CategoryDelete();
+            var data = new DeleteAll(gameData);
+            data.DeleteCategory();
 
-            category = read.CategoryRead();
+            category = read.ReadCategory();
             Category.Items.Clear();
 
             foreach (Category item in category)
             {
                 Category.Items.Add($"{item.Id}.{item.Name}");
-                checkedListBox1.Items.Add(item.Name);
             }
         }
 
@@ -184,15 +228,35 @@ namespace AllGames
             var read = new ReadData();
             var games = new List<Games>();
             var category = new List<Category>();
+            var categoryId = Convert.ToInt32(comboBox1.Text.Split('.')[0]);
 
-            games = read.Read();
-            category = read.CategoryRead();
+            games = read.ReadGame();
+            category = read.ReadCategory();
 
             foreach (Games game in games)
             {
-                if (game.CategoryId == 9)
+                if (game.CategoryId == categoryId)
                 {
-                    var element = new GameElement(game);
+                    var element = new GamePanel(game);
+                    flowLayoutPanel1.Controls.Add(element.Create());
+                }
+            }
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            var read = new ReadData();
+            var games = new List<Games>();
+            var gameName = textBox1.Text;
+
+            games = read.ReadGame();
+
+            foreach (Games game in games)
+            {
+                if (game.Name.Contains(gameName))
+                {
+                    var element = new GamePanel(game);
                     flowLayoutPanel1.Controls.Add(element.Create());
                 }
             }

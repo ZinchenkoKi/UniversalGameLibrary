@@ -1,28 +1,23 @@
 ﻿using AllGames.DataBase.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AllGames.DataBase.CRUDOperations
 {
-    internal class DeleteData
+    internal class DeleteAll
     {
         private GameData _gameData;
 
-        public DeleteData(GameData gameData)
+        public DeleteAll(GameData gameData)
         {
             _gameData = gameData;
         }
 
-        public void Delete()
+        public void DeleteGame()
         {
             using (var context = new DataContext())
             {
                 Games? game = context.Games.FirstOrDefault(i => i.Id == _gameData.Id);
 
-                if (game != null) 
+                if (game != null)
                 {
                     context.Games.Remove(game);
                     context.SaveChanges();
@@ -30,7 +25,7 @@ namespace AllGames.DataBase.CRUDOperations
             }
         }
 
-        public void CategoryDelete()
+        public void DeleteCategory()
         {
             using (var context = new DataContext())
             {

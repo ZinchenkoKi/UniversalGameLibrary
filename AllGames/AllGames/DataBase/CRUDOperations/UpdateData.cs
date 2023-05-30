@@ -19,27 +19,12 @@ namespace AllGames.DataBase.CRUDOperations
 
                 if (game != null)
                 {
-                    if (_gameData.Name != null)
-                    {
-                        game.Name = _gameData.Name;
-                    }
-
-                    if (_gameData.Path != null)
-                    {
-                        game.Path = _gameData.Path;
-                    }
-
-                    if (_gameData.CategoryId != game.CategoryId)
-                    {
-                        game.CategoryId = _gameData.CategoryId;
-                    }
-
-                    if (_gameData.LauncherPath != null)
-                    {
-                        game.LauncherPath = _gameData.LauncherPath;
-                    }
-
+                    game.Name = _gameData.Name;
+                    game.Path = _gameData.Path;
+                    game.CategoryId = _gameData.CategoryId;
+                    game.LauncherPath = _gameData.LauncherPath;
                     game.RequiresLauncher = _gameData.RequiresLauncher;
+                    context.Games.Update(game);
                     context.SaveChanges();
                 }
             }

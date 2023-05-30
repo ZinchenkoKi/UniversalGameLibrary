@@ -1,5 +1,4 @@
-﻿
-namespace AllGames.DataBase
+﻿namespace AllGames.VisualPart
 {
     internal class ButtonStatus
     {

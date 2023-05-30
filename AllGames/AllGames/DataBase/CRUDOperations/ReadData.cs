@@ -4,7 +4,7 @@ namespace AllGames.DataBase.CRUDOperations
 {
     internal class ReadData
     {
-        public List<Games> Read() 
+        public List<Games> ReadGame()
         {
             using (var context = new DataContext())
             {
@@ -13,7 +13,7 @@ namespace AllGames.DataBase.CRUDOperations
             }
         }
 
-        public List<Category> CategoryRead()
+        public List<Category> ReadCategory()
         {
             using (var context = new DataContext())
             {

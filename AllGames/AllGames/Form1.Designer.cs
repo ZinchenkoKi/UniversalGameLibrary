@@ -33,8 +33,8 @@
             tabPage1 = new TabPage();
             tableLayoutPanel8 = new TableLayoutPanel();
             tableLayoutPanel9 = new TableLayoutPanel();
+            comboBox1 = new ComboBox();
             textBox1 = new TextBox();
-            checkedListBox1 = new CheckedListBox();
             button9 = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             tabPage2 = new TabPage();
@@ -124,19 +124,29 @@
             // 
             tableLayoutPanel9.ColumnCount = 1;
             tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel9.Controls.Add(comboBox1, 0, 1);
             tableLayoutPanel9.Controls.Add(textBox1, 0, 0);
-            tableLayoutPanel9.Controls.Add(checkedListBox1, 0, 1);
             tableLayoutPanel9.Controls.Add(button9, 0, 2);
             tableLayoutPanel9.Dock = DockStyle.Fill;
             tableLayoutPanel9.Location = new Point(3, 3);
             tableLayoutPanel9.Name = "tableLayoutPanel9";
             tableLayoutPanel9.RowCount = 4;
-            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 7.485605F));
-            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 17.2744713F));
-            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 5.950096F));
-            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 69.2898254F));
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 8F));
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 8F));
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 8F));
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 76F));
             tableLayoutPanel9.Size = new Size(188, 521);
             tableLayoutPanel9.TabIndex = 0;
+            // 
+            // comboBox1
+            // 
+            comboBox1.Dock = DockStyle.Fill;
+            comboBox1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(3, 44);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(182, 38);
+            comboBox1.TabIndex = 3;
             // 
             // textBox1
             // 
@@ -147,17 +157,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(182, 36);
             textBox1.TabIndex = 0;
-            // 
-            // checkedListBox1
-            // 
-            checkedListBox1.BackColor = SystemColors.ButtonShadow;
-            checkedListBox1.BorderStyle = BorderStyle.None;
-            checkedListBox1.Dock = DockStyle.Fill;
-            checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Location = new Point(3, 42);
-            checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(182, 84);
-            checkedListBox1.TabIndex = 1;
+            textBox1.KeyUp += textBox1_KeyUp;
             // 
             // button9
             // 
@@ -167,10 +167,10 @@
             button9.FlatStyle = FlatStyle.Popup;
             button9.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             button9.ForeColor = SystemColors.Window;
-            button9.Location = new Point(0, 129);
+            button9.Location = new Point(0, 82);
             button9.Margin = new Padding(0);
             button9.Name = "button9";
-            button9.Size = new Size(188, 31);
+            button9.Size = new Size(188, 41);
             button9.TabIndex = 2;
             button9.Text = "Сортировка";
             button9.UseVisualStyleBackColor = false;
@@ -702,8 +702,8 @@
         private TableLayoutPanel tableLayoutPanel8;
         private TableLayoutPanel tableLayoutPanel9;
         private TextBox textBox1;
-        private CheckedListBox checkedListBox1;
         private Button button9;
         private FlowLayoutPanel flowLayoutPanel1;
+        private ComboBox comboBox1;
     }
 }
