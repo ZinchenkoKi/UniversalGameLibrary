@@ -2,23 +2,23 @@
 {
     internal class AutomaticIdOnCommand : ICommand
     {
-        AutomaticId id;
-        Button button;
+        private AutomaticId _id;
+        private Button _button;
 
         public AutomaticIdOnCommand(AutomaticId id, Button button)
         {
-            this.id = id;
-            this.button = button;
+            _id = id;
+            _button = button;
         }
 
         public void Execute()
         {
-            id.On(button);
+            _id.On(_button);
         }
 
         public void Undo()
         {
-            id.Off(button);
+            _id.Off(_button);
         }
     }
 }

@@ -2,23 +2,21 @@
 {
     internal class ButtonActivation
     {
-        ICommand command;
-
-        public ButtonActivation() { }
+        private ICommand _command;
 
         public void SetCommand(ICommand command)
         {
-            this.command = command;
+            _command = command;
         }
 
         public void PressButton()
         {
-            command.Execute();
+            _command.Execute();
         }
 
         public void PressUndo()
         {
-            command.Undo();
+            _command.Undo();
         }
     }
 }

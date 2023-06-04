@@ -4,62 +4,46 @@ namespace AllGames.DataBase.CRUDOperations
 {
     internal class CreateData
     {
-        private GameData _gameData;
-
-        public CreateData(GameData gameData)
-        {
-            _gameData = gameData;
-        }
-
-        public void Create()
+        public void Create(int id, bool RequiresLauncher, params string[] gameData)
         {
             using (var context = new DataContext())
             {
                 var game = new Games()
                 {
-                    Id = _gameData.Id
-                    ,
-                    Name = _gameData.Name
-                    ,
-                    Path = _gameData.Path
-                    ,
-                    CategoryId = _gameData.CategoryId
-                    ,
-                    LauncherPath = _gameData.LauncherPath
-                    ,
-                    RequiresLauncher = _gameData.RequiresLauncher
+                    Id = id
+                    ,Name = gameData[0]
+                    ,Path = gameData[1]
+                    ,CategoryId = Convert.ToInt32(gameData[2])
+                    ,LauncherPath = gameData[3]
+                    ,RequiresLauncher = RequiresLauncher
                 };
                 context.Games.Add(game);
                 context.SaveChanges();
             }
         }
 
-        public void CreationWithoutId()
+        public void Create(bool RequiresLauncher, params string[] gameData)
         {
             using (var context = new DataContext())
             {
                 var game = new Games()
                 {
-                    Name = _gameData.Name
-                    ,
-                    Path = _gameData.Path
-                    ,
-                    CategoryId = _gameData.CategoryId
-                    ,
-                    LauncherPath = _gameData.LauncherPath
-                    ,
-                    RequiresLauncher = _gameData.RequiresLauncher
+                    Name = gameData[0]
+                    ,Path = gameData[1]
+                    ,CategoryId = Convert.ToInt32(gameData[2])
+                    ,LauncherPath = gameData[3]
+                    ,RequiresLauncher = RequiresLauncher
                 };
                 context.Games.Add(game);
                 context.SaveChanges();
             }
         }
 
-        public void CreateCategory()
+        public void Create(string name)
         {
             using (var context = new DataContext())
             {
-                var category = new Category() { Name = _gameData.CategoryName };
+                var category = new Category() { Name = name };
                 context.Categories.Add(category);
                 context.SaveChanges();
             }

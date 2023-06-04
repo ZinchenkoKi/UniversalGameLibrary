@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tableLayoutPanel8 = new TableLayoutPanel();
@@ -89,14 +88,16 @@
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
+            tabControl1.Margin = new Padding(0);
             tabControl1.Name = "tabControl1";
+            tabControl1.Padding = new Point(0, 0);
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(984, 561);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            tabPage1.BackColor = SystemColors.ControlDarkDark;
+            tabPage1.BackColor = Color.FromArgb(58, 61, 83);
             tabPage1.Controls.Add(tableLayoutPanel8);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
@@ -122,6 +123,7 @@
             // 
             // tableLayoutPanel9
             // 
+            tableLayoutPanel9.BackColor = Color.FromArgb(67, 87, 146);
             tableLayoutPanel9.ColumnCount = 1;
             tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel9.Controls.Add(comboBox1, 0, 1);
@@ -140,6 +142,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.BackColor = Color.FromArgb(242, 236, 233);
             comboBox1.Dock = DockStyle.Fill;
             comboBox1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
@@ -150,6 +153,7 @@
             // 
             // textBox1
             // 
+            textBox1.BackColor = Color.FromArgb(242, 236, 233);
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Dock = DockStyle.Fill;
             textBox1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -161,12 +165,11 @@
             // 
             // button9
             // 
-            button9.BackColor = SystemColors.ButtonShadow;
-            button9.BackgroundImage = (Image)resources.GetObject("button9.BackgroundImage");
+            button9.BackColor = Color.FromArgb(188, 170, 140);
             button9.Dock = DockStyle.Fill;
             button9.FlatStyle = FlatStyle.Popup;
             button9.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            button9.ForeColor = SystemColors.Window;
+            button9.ForeColor = Color.FromArgb(242, 236, 233);
             button9.Location = new Point(0, 82);
             button9.Margin = new Padding(0);
             button9.Name = "button9";
@@ -187,7 +190,7 @@
             // 
             // tabPage2
             // 
-            tabPage2.BackColor = SystemColors.ControlDarkDark;
+            tabPage2.BackColor = Color.FromArgb(58, 61, 83);
             tabPage2.Controls.Add(tableLayoutPanel1);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
@@ -234,11 +237,11 @@
             // 
             // button5
             // 
-            button5.BackColor = SystemColors.ButtonShadow;
+            button5.BackColor = Color.FromArgb(188, 170, 140);
             button5.Dock = DockStyle.Fill;
             button5.FlatStyle = FlatStyle.Popup;
             button5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            button5.ForeColor = SystemColors.Window;
+            button5.ForeColor = Color.FromArgb(242, 236, 233);
             button5.Location = new Point(0, 441);
             button5.Margin = new Padding(0);
             button5.Name = "button5";
@@ -250,11 +253,11 @@
             // 
             // button6
             // 
-            button6.BackColor = SystemColors.ButtonShadow;
+            button6.BackColor = Color.FromArgb(188, 170, 140);
             button6.Dock = DockStyle.Fill;
             button6.FlatStyle = FlatStyle.Popup;
             button6.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            button6.ForeColor = SystemColors.Window;
+            button6.ForeColor = Color.FromArgb(242, 236, 233);
             button6.Location = new Point(127, 441);
             button6.Margin = new Padding(0);
             button6.Name = "button6";
@@ -266,11 +269,11 @@
             // 
             // button7
             // 
-            button7.BackColor = SystemColors.ButtonShadow;
+            button7.BackColor = Color.FromArgb(188, 170, 140);
             button7.Dock = DockStyle.Fill;
             button7.FlatStyle = FlatStyle.Popup;
             button7.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            button7.ForeColor = SystemColors.Window;
+            button7.ForeColor = Color.FromArgb(242, 236, 233);
             button7.Location = new Point(254, 441);
             button7.Margin = new Padding(0);
             button7.Name = "button7";
@@ -282,7 +285,7 @@
             // 
             // tableLayoutPanel3
             // 
-            tableLayoutPanel3.BackColor = SystemColors.ButtonShadow;
+            tableLayoutPanel3.BackColor = Color.FromArgb(67, 87, 146);
             tableLayoutPanel3.ColumnCount = 1;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.Controls.Add(label4, 0, 0);
@@ -303,7 +306,7 @@
             label4.AutoSize = true;
             label4.Dock = DockStyle.Fill;
             label4.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.ForeColor = SystemColors.Window;
+            label4.ForeColor = Color.FromArgb(242, 236, 233);
             label4.Location = new Point(3, 0);
             label4.Name = "label4";
             label4.Size = new Size(279, 48);
@@ -313,6 +316,7 @@
             // 
             // Category
             // 
+            Category.BackColor = Color.FromArgb(242, 236, 233);
             Category.Dock = DockStyle.Fill;
             Category.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             Category.FormattingEnabled = true;
@@ -340,11 +344,11 @@
             // 
             // button4
             // 
-            button4.BackColor = SystemColors.ButtonShadow;
+            button4.BackColor = Color.FromArgb(188, 170, 140);
             button4.Dock = DockStyle.Fill;
             button4.FlatStyle = FlatStyle.Popup;
             button4.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.ForeColor = SystemColors.Window;
+            button4.ForeColor = Color.FromArgb(242, 236, 233);
             button4.Location = new Point(0, 0);
             button4.Margin = new Padding(0);
             button4.Name = "button4";
@@ -356,11 +360,11 @@
             // 
             // button8
             // 
-            button8.BackColor = SystemColors.ButtonShadow;
+            button8.BackColor = Color.FromArgb(188, 170, 140);
             button8.Dock = DockStyle.Fill;
             button8.FlatStyle = FlatStyle.Popup;
             button8.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button8.ForeColor = SystemColors.Window;
+            button8.ForeColor = Color.FromArgb(242, 236, 233);
             button8.Location = new Point(0, 0);
             button8.Margin = new Padding(0);
             button8.Name = "button8";
@@ -372,6 +376,7 @@
             // 
             // tableLayoutPanel4
             // 
+            tableLayoutPanel4.BackColor = Color.FromArgb(67, 87, 146);
             tableLayoutPanel4.ColumnCount = 1;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel4.Controls.Add(label1, 0, 0);
@@ -407,10 +412,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = SystemColors.ButtonShadow;
+            label1.BackColor = Color.FromArgb(188, 170, 140);
             label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.Window;
+            label1.ForeColor = Color.FromArgb(242, 236, 233);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
             label1.Size = new Size(279, 34);
@@ -420,7 +425,7 @@
             // 
             // tableLayoutPanel5
             // 
-            tableLayoutPanel5.BackColor = SystemColors.ButtonShadow;
+            tableLayoutPanel5.BackColor = Color.FromArgb(188, 170, 140);
             tableLayoutPanel5.ColumnCount = 3;
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
@@ -437,7 +442,7 @@
             // 
             // Id
             // 
-            Id.BackColor = SystemColors.Window;
+            Id.BackColor = Color.FromArgb(242, 236, 233);
             Id.BorderStyle = BorderStyle.None;
             Id.Dock = DockStyle.Fill;
             Id.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
@@ -450,11 +455,11 @@
             // 
             // button1
             // 
-            button1.BackColor = SystemColors.ButtonShadow;
+            button1.BackColor = Color.FromArgb(188, 170, 140);
             button1.Dock = DockStyle.Fill;
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.Window;
+            button1.ForeColor = Color.FromArgb(242, 236, 233);
             button1.Location = new Point(194, 0);
             button1.Margin = new Padding(0);
             button1.Name = "button1";
@@ -467,10 +472,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.BackColor = SystemColors.ButtonShadow;
+            label2.BackColor = Color.FromArgb(188, 170, 140);
             label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.Window;
+            label2.ForeColor = Color.FromArgb(242, 236, 233);
             label2.Location = new Point(3, 136);
             label2.Name = "label2";
             label2.Size = new Size(279, 34);
@@ -481,10 +486,10 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.BackColor = SystemColors.ButtonShadow;
+            label5.BackColor = Color.FromArgb(188, 170, 140);
             label5.Dock = DockStyle.Fill;
             label5.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.ForeColor = SystemColors.Window;
+            label5.ForeColor = Color.FromArgb(242, 236, 233);
             label5.Location = new Point(3, 272);
             label5.Name = "label5";
             label5.Size = new Size(279, 34);
@@ -494,7 +499,7 @@
             // 
             // NameBox
             // 
-            NameBox.BackColor = SystemColors.Window;
+            NameBox.BackColor = Color.FromArgb(242, 236, 233);
             NameBox.BorderStyle = BorderStyle.None;
             NameBox.Dock = DockStyle.Fill;
             NameBox.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
@@ -506,7 +511,7 @@
             // 
             // tableLayoutPanel6
             // 
-            tableLayoutPanel6.BackColor = SystemColors.ButtonShadow;
+            tableLayoutPanel6.BackColor = Color.FromArgb(188, 170, 140);
             tableLayoutPanel6.ColumnCount = 3;
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
@@ -524,7 +529,7 @@
             // 
             // Path
             // 
-            Path.BackColor = SystemColors.Window;
+            Path.BackColor = Color.FromArgb(242, 236, 233);
             Path.BorderStyle = BorderStyle.None;
             Path.Dock = DockStyle.Fill;
             Path.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
@@ -537,11 +542,11 @@
             // 
             // button2
             // 
-            button2.BackColor = SystemColors.ButtonShadow;
+            button2.BackColor = Color.FromArgb(188, 170, 140);
             button2.Dock = DockStyle.Fill;
             button2.FlatStyle = FlatStyle.Popup;
             button2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.ForeColor = SystemColors.Window;
+            button2.ForeColor = Color.FromArgb(242, 236, 233);
             button2.Location = new Point(166, 0);
             button2.Margin = new Padding(0);
             button2.Name = "button2";
@@ -554,10 +559,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.BackColor = SystemColors.ButtonShadow;
+            label3.BackColor = Color.FromArgb(188, 170, 140);
             label3.Dock = DockStyle.Fill;
             label3.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.Window;
+            label3.ForeColor = Color.FromArgb(242, 236, 233);
             label3.Location = new Point(3, 408);
             label3.Name = "label3";
             label3.Size = new Size(279, 34);
@@ -567,7 +572,7 @@
             // 
             // tableLayoutPanel7
             // 
-            tableLayoutPanel7.BackColor = SystemColors.ButtonShadow;
+            tableLayoutPanel7.BackColor = Color.FromArgb(188, 170, 140);
             tableLayoutPanel7.ColumnCount = 5;
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.4545441F));
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090909F));
@@ -588,7 +593,7 @@
             // 
             // LauncherPath
             // 
-            LauncherPath.BackColor = SystemColors.Window;
+            LauncherPath.BackColor = Color.FromArgb(242, 236, 233);
             LauncherPath.BorderStyle = BorderStyle.None;
             LauncherPath.Dock = DockStyle.Fill;
             LauncherPath.Enabled = false;
@@ -602,11 +607,11 @@
             // 
             // button3
             // 
-            button3.BackColor = SystemColors.ButtonShadow;
+            button3.BackColor = Color.FromArgb(188, 170, 140);
             button3.Dock = DockStyle.Fill;
             button3.FlatStyle = FlatStyle.Popup;
             button3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.ForeColor = SystemColors.Window;
+            button3.ForeColor = Color.FromArgb(242, 236, 233);
             button3.Location = new Point(151, 0);
             button3.Margin = new Padding(0);
             button3.Name = "button3";
@@ -618,11 +623,11 @@
             // 
             // requiresLauncher
             // 
-            requiresLauncher.BackColor = SystemColors.ButtonShadow;
+            requiresLauncher.BackColor = Color.FromArgb(188, 170, 140);
             requiresLauncher.Dock = DockStyle.Fill;
             requiresLauncher.FlatStyle = FlatStyle.Popup;
             requiresLauncher.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            requiresLauncher.ForeColor = SystemColors.Window;
+            requiresLauncher.ForeColor = Color.FromArgb(242, 236, 233);
             requiresLauncher.Location = new Point(226, 0);
             requiresLauncher.Margin = new Padding(0);
             requiresLauncher.Name = "requiresLauncher";
@@ -636,7 +641,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlDarkDark;
+            BackColor = Color.FromArgb(58, 61, 83);
             ClientSize = new Size(984, 561);
             Controls.Add(tabControl1);
             Name = "Form1";

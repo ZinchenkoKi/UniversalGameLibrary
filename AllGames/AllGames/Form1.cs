@@ -2,8 +2,9 @@
 using AllGames.Application_Logic.Checks;
 using AllGames.ApplicationInterface.ChangingState;
 using AllGames.ApplicationInterface.Create;
-using AllGames.DataBase;
 using AllGames.DataBase.CRUDOperations;
+using AllGames.DataBase.CRUDOperations.Delete;
+using AllGames.DataBase.CRUDOperations.Read;
 using AllGames.DataBase.Entity;
 using AllGames.VisualPart;
 
@@ -19,13 +20,13 @@ namespace AllGames
         private void button2_Click(object sender, EventArgs e)
         {
             var filePath = new FilePath();
-            Path.Text = filePath.Get();
+            Path.Text = filePath.GetPath();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             var filePath = new FilePath();
-            LauncherPath.Text = filePath.Get();
+            LauncherPath.Text = filePath.GetPath();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -34,39 +35,31 @@ namespace AllGames
             var checking = new CheckingAddition();
             var launcherNeeded = status.Check(requiresLauncher);
             var fieldsFilled = checking.Checking(NameBox, Path, Category);
+            var categoryId = Category.Text.Split('.')[0];
 
             if (fieldsFilled)
             {
                 if (launcherNeeded)
                 {
-                    var gameData = GameData.With()
-                     .Id(Convert.ToInt32(Id.Text))
-                     .Name(NameBox.Text)
-                     .Path(Path.Text)
-                     .LauncherPath(LauncherPath.Text)
-                     .RequiresLauncher(launcherNeeded)
-                     .CategoryId(Convert.ToInt32(Category.Text.Split('.')[0]))
-                     .CategoryName(Category.Text.Split('.')[1])
-                     .Build();
-
-                    var data = new CreateData(gameData);
-                    data.Create();
+                    var data = new CreateData();
+                    data.Create(
+                        Convert.ToInt32(Id.Text)
+                        , launcherNeeded
+                        , NameBox.Text
+                        , Path.Text
+                        , categoryId
+                        , LauncherPath.Text);
                 }
                 else
                 {
-                    var gameData = GameData.With()
-                     .Name(NameBox.Text)
-                     .Path(Path.Text)
-                     .LauncherPath(LauncherPath.Text)
-                     .RequiresLauncher(launcherNeeded)
-                     .CategoryId(Convert.ToInt32(Category.Text.Split('.')[0]))
-                     .CategoryName(Category.Text.Split('.')[1])
-                     .Build();
-
-                    var data = new CreateData(gameData);
-                    data.CreationWithoutId();
+                    var data = new CreateData();
+                    data.Create(
+                        launcherNeeded
+                        , NameBox.Text
+                        , Path.Text
+                        , categoryId
+                        , LauncherPath.Text);
                 }
-
                 Id.Clear();
                 Path.Clear();
                 NameBox.Clear();
@@ -101,12 +94,11 @@ namespace AllGames
         private void button6_Click(object sender, EventArgs e)
         {
             var checking = new CheckingDeletion();
-            var fieldsFilled = checking.Checking(Id);
-            if (fieldsFilled)
+
+            if (checking.Checking(Id))
             {
-                var gameData = GameData.With().Id(Convert.ToInt32(Id.Text)).Build();
-                var data = new DeleteAll(gameData);
-                data.DeleteGame();
+                var data = new DeleteGame();
+                data.Delete(Convert.ToInt32(Id.Text));
                 Id.Clear();
             }
             else
@@ -124,17 +116,8 @@ namespace AllGames
 
             if (fieldsFilled)
             {
-                var gameData = GameData.With()
-                    .Id(Convert.ToInt32(Id.Text))
-                    .Name(NameBox.Text)
-                    .Path(Path.Text)
-                    .LauncherPath(LauncherPath.Text)
-                    .RequiresLauncher(launcherNeeded)
-                    .CategoryId(Convert.ToInt32(Category.Text.Split('.')[0]))
-                    .CategoryName(Category.Text.Split('.')[1])
-                    .Build();
-                var update = new UpdateData(gameData);
-                update.Update();
+                var update = new UpdateData();
+                update.Update(Id, launcherNeeded, Category, NameBox, Path, LauncherPath);
 
                 Id.Clear();
                 Path.Clear();
@@ -175,12 +158,10 @@ namespace AllGames
             var elements = new LibraryElements();
 
             category = read.ReadCategory();
-
             var box = new ComboBoxItems(category);
 
             box.Create(Category);
             box.Create(comboBox1);
-
             elements.Add(flowLayoutPanel1);
         }
 
@@ -188,12 +169,10 @@ namespace AllGames
         {
             var read = new ReadData();
             var category = new List<Category>();
+            var data = new CreateData();
+            var categoryName = Category.Text.Split('.')[1];
 
-            var gameData = GameData.With().CategoryName(Category.Text).Build();
-
-            var data = new CreateData(gameData);
-            data.CreateCategory();
-
+            data.Create(categoryName);
             category = read.ReadCategory();
             Category.Items.Clear();
 
@@ -206,13 +185,11 @@ namespace AllGames
         private void button8_Click(object sender, EventArgs e)
         {
             var read = new ReadData();
+            var data = new DeleteCategory();
             var category = new List<Category>();
+            var categoryId = Convert.ToInt32(Category.Text.Split('.')[0]);
 
-            var gameData = GameData.With().CategoryId(Convert.ToInt32(Category.Text.Split('.')[0])).Build();
-
-            var data = new DeleteAll(gameData);
-            data.DeleteCategory();
-
+            data.Delete(categoryId);
             category = read.ReadCategory();
             Category.Items.Clear();
 
@@ -227,11 +204,11 @@ namespace AllGames
             flowLayoutPanel1.Controls.Clear();
             var read = new ReadData();
             var games = new List<Games>();
-            var category = new List<Category>();
+            var categories = new List<Category>();
             var categoryId = Convert.ToInt32(comboBox1.Text.Split('.')[0]);
 
             games = read.ReadGame();
-            category = read.ReadCategory();
+            categories = read.ReadCategory();
 
             foreach (Games game in games)
             {

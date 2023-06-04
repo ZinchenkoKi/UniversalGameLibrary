@@ -3,7 +3,7 @@ namespace AllGames.Application_Logic
 {
     internal class FilePath
     {
-        public string Get()
+        public string GetPath()
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.ShowDialog();
